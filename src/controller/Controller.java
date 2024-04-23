@@ -9,6 +9,6 @@ package controller;
  *
  * @author USER
  */
-public class Controller {
+public interface Controller {
     
 }

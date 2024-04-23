@@ -5,6 +5,7 @@
  */
 package tubes;
 import view.pelamaar;
+import view.auth.Login;
 /**
  *
  * @author USER
@@ -16,7 +17,7 @@ public class Tubes {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        pelamaar viewPelamar = new pelamaar();
+        Login viewPelamar = new Login();
         viewPelamar.setVisible(true);
     }
     

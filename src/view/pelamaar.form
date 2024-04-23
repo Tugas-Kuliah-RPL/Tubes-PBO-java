@@ -27,10 +27,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="input_nik" max="32767" attributes="0"/>
-                  <Component id="input_nama" alignment="0" pref="246" max="32767" attributes="0"/>
-                  <Component id="input_telepon" alignment="0" pref="246" max="32767" attributes="0"/>
-                  <Component id="input_email" alignment="0" pref="246" max="32767" attributes="0"/>
-                  <Component id="input_status" alignment="0" pref="246" max="32767" attributes="0"/>
+                  <Component id="input_nama" alignment="0" pref="232" max="32767" attributes="0"/>
+                  <Component id="input_telepon" alignment="0" pref="232" max="32767" attributes="0"/>
+                  <Component id="input_email" alignment="0" pref="232" max="32767" attributes="0"/>
+                  <Component id="input_status" alignment="0" pref="232" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="label_nik" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                   <Component id="btn_update" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_delete" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace pref="77" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
