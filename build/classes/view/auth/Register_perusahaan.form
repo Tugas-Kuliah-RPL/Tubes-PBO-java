@@ -220,7 +220,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="no_telepon"/>
+            <Property name="text" type="java.lang.String" value="website"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField6ActionPerformed"/>

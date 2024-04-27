@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package view.auth;
-import view.pelamaar;
+import view.table.pelamaar;
+import view.table.Perusahaan;
+import view.*;
+import view.page.pelamar.*;
 /**
  *
  * @author USER
@@ -117,7 +120,7 @@ public class Login extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
-         pelamaar p = new pelamaar();
+         home p = new home();
          p.setVisible(true);
         
     }//GEN-LAST:event_btn_loginActionPerformed

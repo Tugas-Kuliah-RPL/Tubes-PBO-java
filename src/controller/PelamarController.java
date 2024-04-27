@@ -7,11 +7,12 @@ package controller;
 import java.sql.*;
 import model.Pelamaar;
 import javax.swing.table.DefaultTableModel;
+import controller.Controller;
 /**
  *
  * @author USER
  */
-public class PelamarController {
+public class PelamarController extends Controller {
     public static ResultSet index(){
        ResultSet rs = new Pelamaar().getData("SELECT * FROM tbl_pelamar");
         System.out.println("here 2");

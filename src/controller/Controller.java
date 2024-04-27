@@ -5,10 +5,13 @@
  */
 package controller;
 
+import java.sql.ResultSet;
+import model.Pelamaar;
+
 /**
  *
- * @author USER
+ * @author LOQ
  */
-public interface Controller {
-    
+abstract class Controller {
+
 }

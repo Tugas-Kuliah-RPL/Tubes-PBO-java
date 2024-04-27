@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package tubes;
-import view.pelamaar;
+import java.io.File;
+import view.table.pelamaar;
 import view.auth.Login;
 /**
  *
@@ -19,6 +20,8 @@ public class Tubes {
         // TODO code application logic here
         Login viewPelamar = new Login();
         viewPelamar.setVisible(true);
+        
+       
     }
     
 }

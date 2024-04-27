@@ -120,7 +120,7 @@ public class Register_perusahaan extends javax.swing.JFrame {
         jLabel6.setText("email");
         container_login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, 26));
 
-        jTextField6.setText("no_telepon");
+        jTextField6.setText("website");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
