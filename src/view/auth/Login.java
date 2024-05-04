@@ -4,6 +4,15 @@
  * and open the template in the editor.
  */
 package view.auth;
+import Session.AuthSession;
+import controller.authController;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.connection;
 import view.table.pelamaar;
 import view.table.Perusahaan;
 import view.*;
@@ -32,10 +41,10 @@ public class Login extends javax.swing.JFrame {
 
         container_login = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        input_username = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        input_password = new javax.swing.JTextField();
         btn_register = new javax.swing.JButton();
         btn_login = new javax.swing.JButton();
 
@@ -54,13 +63,13 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Login form");
         container_login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, -1, 26));
 
-        jTextField1.setText("username");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        input_username.setText("username");
+        input_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                input_usernameActionPerformed(evt);
             }
         });
-        container_login.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, 292, 34));
+        container_login.add(input_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, 292, 34));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("username");
@@ -70,8 +79,8 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("password");
         container_login.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 26));
 
-        jTextField2.setText("password");
-        container_login.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 292, 34));
+        input_password.setText("password");
+        container_login.add(input_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 292, 34));
 
         btn_register.setText("register");
         btn_register.addActionListener(new java.awt.event.ActionListener() {
@@ -113,15 +122,35 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_container_loginComponentAdded
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void input_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_usernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_input_usernameActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-         this.setVisible(false);
-         home p = new home();
-         p.setVisible(true);
+        
+        String username = input_username.getText();
+        String password = input_password.getText();
+        
+        if(username.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(this, "semua kolom harus disi", "validasi",JOptionPane.ERROR_MESSAGE); // buat erorr message
+            return;
+        }
+        authController auth = new authController();
+            ArrayList<String> arrUser = new  ArrayList<String>();
+            arrUser.add(username);
+            arrUser.add(password);
+
+         int result = authController.login(arrUser);
+         if(result > 0){
+            this.setVisible(false);
+            home p = new home(new AuthSession("",0));
+            p.setVisible(true);
+         }else{
+            JOptionPane.showMessageDialog(this, "Login erorr", "validasi",JOptionPane.ERROR_MESSAGE); // buat erorr message
+            return;
+         }
+       
         
     }//GEN-LAST:event_btn_loginActionPerformed
 
@@ -170,10 +199,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JPanel container_login;
+    private javax.swing.JTextField input_password;
+    private javax.swing.JTextField input_username;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

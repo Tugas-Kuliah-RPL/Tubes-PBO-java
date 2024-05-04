@@ -5,6 +5,8 @@
  */
 package view.page.pelamar;
 
+import Session.AuthSession;
+
 /**
  *
  * @author LOQ
@@ -119,7 +121,7 @@ public class list_lamaran extends javax.swing.JFrame {
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
-         home p = new home();
+         home p = new home(new AuthSession("",-1));
          p.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 

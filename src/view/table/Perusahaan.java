@@ -5,8 +5,10 @@
  */
 package view.table;
 import controller.PerusahaanController;
+import java.awt.List;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -271,8 +273,15 @@ public class Perusahaan extends javax.swing.JFrame {
         }
 
         try{
+            ArrayList<String> arr =  new  ArrayList<String>();
+            arr.add(nama);
+            arr.add(deskripsi);
+            arr.add(deskripsi);
+            arr.add(alamat);
+            arr.add(telepon);
+            arr.add(website);
             String[] row = {nama,deskripsi,alamat,telepon,website}; // call controller
-            int result = PerusahaanController.insert(row);
+            int result = PerusahaanController.insert(arr);
             if(result > 0 ){
                 JOptionPane.showMessageDialog(this, "data berhasil di tambah");
                 this.getData();

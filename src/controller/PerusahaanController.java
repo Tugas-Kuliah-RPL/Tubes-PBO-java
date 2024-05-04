@@ -5,7 +5,9 @@
  */
 package controller;
 import controller.Controller;
+import java.awt.List;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import model.Pelamaar;
 /**
  *
@@ -17,7 +19,7 @@ public class PerusahaanController extends Controller {
         System.out.println("here 2");
        return rs;
     }
-    public static int insert(String[] values)  {
+    public static int insert(ArrayList<String> values)  {
         String[] columns = {"nama","deskripsi", "alamat","email","website"};;
         return new Pelamaar().insert("tbl_perusahaan", columns, values);
     }

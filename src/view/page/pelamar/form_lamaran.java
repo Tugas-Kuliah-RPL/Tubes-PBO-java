@@ -234,6 +234,7 @@ public class form_lamaran extends javax.swing.JFrame {
               }
 
                 System.out.println("File copied successfully: " + destinationFile.getAbsolutePath());
+                System.out.println(destinationFile.getName());
             } catch (IOException e) {
                 System.err.println("Error copying file: " + e.getMessage());
             }  

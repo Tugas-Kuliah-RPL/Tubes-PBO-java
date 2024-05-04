@@ -7,6 +7,7 @@ package model;
 import java.sql.*;
 import javax.swing.*;
 import java.sql.Connection;
+import java.util.ArrayList;
 /**
  *
  * @author USER
@@ -15,8 +16,8 @@ public interface model {
 
     public Connection getConnection() throws SQLException;
     public ResultSet getData(String SQLString);
-    public void query (String SQLString);
-    public int insert(String tableName, String[] columns, String[] values);
+    public ResultSet query (String SQLString);
+    public int insert(String tableName, String[] columns, ArrayList<String> values);
     public int edit(String tableName, String[] columns, String[] values, String whereClause);
     public int delete(String tableName, String whereClause);
 }

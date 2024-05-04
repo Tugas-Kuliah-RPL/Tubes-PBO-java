@@ -9,7 +9,7 @@ import model.connection;
  *
  * @author USER
  */
-public class Pelamaar extends connection {
+public class Pelamaar extends authentication {
     private String nik;
     private String nama_pelamar;
     private String nomer_telepon;

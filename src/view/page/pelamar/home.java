@@ -5,6 +5,8 @@
  */
 package view.page.pelamar;
 
+import Session.AuthSession;
+
 /**
  *
  * @author LOQ
@@ -14,7 +16,7 @@ public class home extends javax.swing.JFrame {
     /**
      * Creates new form home
      */
-    public home() {
+    public home(AuthSession session) {
         initComponents();
     }
 
@@ -127,7 +129,7 @@ public class home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new home().setVisible(true);
+                new home(new AuthSession("",-1)).setVisible(true);
             }
         });
     }

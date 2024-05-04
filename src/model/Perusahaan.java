@@ -9,7 +9,7 @@ import model.connection;
  *
  * @author LOQ
  */
-public class Perusahaan extends connection {
+public class Perusahaan extends authentication {
     private int id;
     private String deskripsi;
     private String alamat;

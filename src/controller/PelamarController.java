@@ -8,6 +8,7 @@ import java.sql.*;
 import model.Pelamaar;
 import javax.swing.table.DefaultTableModel;
 import controller.Controller;
+import java.util.ArrayList;
 /**
  *
  * @author USER
@@ -18,7 +19,7 @@ public class PelamarController extends Controller {
         System.out.println("here 2");
        return rs;
     }
-    public static int insert(String[] values)  {
+    public static int insert(ArrayList<String> values)  {
         String[] columns = {"nik","nama_pelamar","nomer_telepon","email","status"};
         return new Pelamaar().insert("tbl_pelamar", columns, values);
     }
