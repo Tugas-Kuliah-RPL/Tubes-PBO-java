@@ -10,6 +10,7 @@ import model.connection;
  * @author LOQ
  */
 public class Perusahaan extends authentication {
+    public static String table = "tbl_perusahaan";
     private int id;
     private String deskripsi;
     private String alamat;

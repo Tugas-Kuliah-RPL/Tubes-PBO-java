@@ -10,6 +10,7 @@ import model.connection;
  * @author USER
  */
 public class Pelamaar extends authentication {
+    public static String table = "tbl_pelamar";
     private String nik;
     private String nama_pelamar;
     private String nomer_telepon;

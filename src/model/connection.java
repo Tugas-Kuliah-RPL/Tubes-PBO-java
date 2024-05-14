@@ -5,6 +5,7 @@
  */
 package model;
 import java.awt.List;
+import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -18,7 +19,7 @@ import model.model;
  *
  * @author USER
  */
-public class connection implements model {
+public class connection<T>  implements model<T> {
     
     static final String DB_URL = "jdbc:mysql://localhost/db_lamar_kerja";
     static final String DB_USER = "root";
@@ -70,80 +71,72 @@ public class connection implements model {
     }
 
     @Override
-     public int insert(String tableName, String[] columns, ArrayList<String> values){
-        if (columns.length != values.size()) {
-            throw new IllegalArgumentException("Columns and values arrays must have the same length.");
-        }
+    public int insert(ArrayList<T> values, Class<T> type) {
+        int rowsInserted = 0;
+        String tableName = getTableName(type);
+        System.out.println(tableName);
+        StringBuilder sql = new StringBuilder("INSERT INTO " + tableName + " VALUES (");
 
-        StringBuilder sql = new StringBuilder("INSERT INTO " + tableName + " (");
-         int rowInserted = 0;
-        for (int i = 0; i < columns.length; i++) {
-            sql.append(columns[i]);
-            if (i < columns.length - 1) {
+        for (int i = 0; i < values.size(); i++) {
+            sql.append("?");
+            if (i < values.size() - 1) {
                 sql.append(", ");
             }
         }
-        sql.append(") VALUES (");
-        for (int i = 0; i < values.size(); i++) {
-            sql.append("?, "); // Use placeholders for dynamic values
-        }
-        sql.deleteCharAt(sql.length() - 2); // Remove trailing comma
         sql.append(")");
-
-        try (PreparedStatement pstmt = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS)) { /// set builder to string
+        System.out.println(sql);
+        
+         // set value "?"
+        try (PreparedStatement pstmt = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS)) {
             for (int i = 0; i < values.size(); i++) {
-                pstmt.setString(i + 1, values.get(i)); // Set values using index starting from 1
+                pstmt.setString(i + 1, (String)values.get(i));
             }
-            
-            rowInserted = pstmt.executeUpdate();
+            rowsInserted = pstmt.executeUpdate();
             ResultSet rs = pstmt.getGeneratedKeys();
-            int generatedKey = 0;
             if (rs.next()) {
-                generatedKey = rs.getInt(1);
-                System.out.println(generatedKey);
+                return rs.getInt(1); // return generated ID
             }
-            return rs.getInt(1); // return id
-        }catch(Exception e){
-           JOptionPane.showMessageDialog(null,"Error :"+e.getMessage(),"Communication Error",JOptionPane.WARNING_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Communication Error", JOptionPane.WARNING_MESSAGE);
         }
+       
         return 0;
     }
 
     @Override
-    public int edit(String tableName, String[] columns, String[] values, String whereClause) {
-        if (columns.length != values.length) {
-            throw new IllegalArgumentException("Columns and values arrays must have the same length.");
-        }
-
+    public int edit(String[] column, ArrayList<T> values, Class<T> type, int id) {
+        int rowsUpdated = 0;
+        String tableName = getTableName(type);
         StringBuilder sql = new StringBuilder("UPDATE " + tableName + " SET ");
-        int rowUpdated = 0;
-        for (int i = 0; i < columns.length; i++) {
-            sql.append(columns[i] + " = ?, ");
-        }
-        sql.deleteCharAt(sql.length() - 2); // Remove trailing comma
-        if (!whereClause.isEmpty()) {
-            sql.append(" WHERE id = "+ whereClause);
-        }
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
-            for (int i = 0; i < values.length; i++) {
-                pstmt.setString(i + 1, values[i]); // Set values using index starting from 1
+        for (int i = 0; i < column.length; i++) {
+            sql.append(column[i]).append(" = ?");
+            if (i < values.size() - 1) {
+                sql.append(", ");
             }
-            // wehre update
-//            if (!whereClause.isEmpty()) {
-//               pstmt.setString(values.length+1, whereClause);
-//           }
-           rowUpdated = pstmt.executeUpdate();
-           return rowUpdated;
-        }catch(Exception e){
-             JOptionPane.showMessageDialog(null,"Error :"+e.getMessage(),"Communication Error",JOptionPane.WARNING_MESSAGE);
-        }   
-        return rowUpdated;
+        }
+        sql.append(" WHERE id = ?");
+        //System.out.println(sql);
+        
+        // set value "?"
+        try (PreparedStatement pstmt = conn.prepareStatement(sql.toString())) {
+            for (int i = 0; i < values.size(); i++) {
+                pstmt.setObject(i + 1, values.get(i));
+            }
+            pstmt.setInt(values.size() + 1, id);
+
+            rowsUpdated = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Communication Error", JOptionPane.WARNING_MESSAGE);
+        }
+        return rowsUpdated;
     }
 
+
     @Override
-     public int delete(String tableName, String whereClause){
-        String sql = "DELETE FROM " + tableName;
+     public int delete(Class<T> type, String whereClause){
+        String sql = "DELETE FROM " + getTableName(type);
+        System.out.println(sql);
         int rowDeleted = 0 ;
         if (!whereClause.isEmpty()) {
             sql += " WHERE " + whereClause;
@@ -156,6 +149,18 @@ public class connection implements model {
              JOptionPane.showMessageDialog(null,"Error :"+e.getMessage(),"Communication Error",JOptionPane.WARNING_MESSAGE);
         }   
          return rowDeleted;
+    }
+     
+    @Override
+    public String getTableName(Class<T> type) {
+        try {
+            Field tableField = type.getField("table");
+            System.out.println(tableField.get(null));
+            return (String) tableField.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            Logger.getLogger(connection.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return null;
     }
     
 }

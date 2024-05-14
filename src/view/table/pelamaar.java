@@ -252,7 +252,7 @@ public class pelamaar extends javax.swing.JFrame {
         String nik = input_nik.getText(); // get input
         String nama = input_nama.getText();
         String telepon = input_telepon.getText();
-        String email = input_telepon.getText();
+        String email = input_email.getText();
         String status = input_status.getText();
         
         if (nik.isEmpty() || nama.isEmpty() || telepon.isEmpty() || email.isEmpty() || status.isEmpty()){
@@ -262,12 +262,13 @@ public class pelamaar extends javax.swing.JFrame {
         
         try{
             ArrayList<String> arr =  new  ArrayList<String>();
+            arr.add(null);
             arr.add(nik);
             arr.add(nama);
-            arr.add(telepon);
             arr.add(email);
             arr.add(status);
-            String[] row = {nik,nama,telepon,email,status}; // call controller
+            arr.add(telepon);
+            arr.add(null);
             int result = PelamarController.insert(arr);
             if(result > 0 ){
                 JOptionPane.showMessageDialog(this, "data berhasil di tambah");
@@ -282,7 +283,7 @@ public class pelamaar extends javax.swing.JFrame {
 
     private void table_pelamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_pelamarMouseClicked
         // TODO add your handling code here:
-        
+          this.status("disabled");
            int selectedRow = table_pelamar.getSelectedRow();
            String nik = table_pelamar.getValueAt(selectedRow, 1).toString();
            String nama = table_pelamar.getValueAt(selectedRow, 2).toString();
@@ -294,7 +295,6 @@ public class pelamaar extends javax.swing.JFrame {
            input_telepon.setText(telepon);
            input_email.setText(email);
            input_status.setText(Status);
-              this.status("enabled");
     }//GEN-LAST:event_table_pelamarMouseClicked
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
@@ -309,7 +309,7 @@ public class pelamaar extends javax.swing.JFrame {
          String nik = input_nik.getText(); // get input
         String nama = input_nama.getText();
         String telepon = input_telepon.getText();
-        String email = input_telepon.getText();
+        String email = input_email.getText();
         String status = input_status.getText();
         
         if (nik.isEmpty() || nama.isEmpty() || telepon.isEmpty() || email.isEmpty() || status.isEmpty()){
@@ -317,13 +317,18 @@ public class pelamaar extends javax.swing.JFrame {
             return;
         }
         try{
-            String[] row = {nik,nama,telepon,email,status}; // call controller
-            int result = PelamarController.update(row, id);
+            ArrayList<String> arr =  new  ArrayList<String>();
+            arr.add(nik);
+            arr.add(nama);
+            arr.add(telepon);
+            arr.add(email);
+            arr.add(status);
+            int result = PelamarController.update(arr , Integer.parseInt(id));
             if(result > 0 ){
                 JOptionPane.showMessageDialog(this, "data berhasil di update");
                 this.getData();
                 this.resetform();
-                this.status("disabled");
+               this.status("enabled");
             }
         }catch(Exception E){
           JOptionPane.showMessageDialog(this, "error input", "validasi",JOptionPane.ERROR_MESSAGE); // buat erorr message
@@ -346,7 +351,7 @@ public class pelamaar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "data berhasil di delete");
                 this.getData();
                 this.resetform();
-                this.status("disabled");
+                this.status("enabled");
          }
         }catch(Exception E){
           JOptionPane.showMessageDialog(this, "error", "validasi",JOptionPane.ERROR_MESSAGE); // buat erorr message

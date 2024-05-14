@@ -12,12 +12,13 @@ import java.util.ArrayList;
  *
  * @author USER
  */
-public interface model {
+public interface model <T> {
 
     public Connection getConnection() throws SQLException;
     public ResultSet getData(String SQLString);
     public ResultSet query (String SQLString);
-    public int insert(String tableName, String[] columns, ArrayList<String> values);
-    public int edit(String tableName, String[] columns, String[] values, String whereClause);
-    public int delete(String tableName, String whereClause);
+    public int insert(ArrayList<T> values, Class<T> Type);
+    public int edit(String[] column, ArrayList<T> values, Class<T> Type, int id);
+    public int delete(Class<T> type, String whereClause);
+    public String getTableName(Class<T> type);
 }

@@ -6,6 +6,12 @@
 package view.page.pelamar;
 
 import Session.AuthSession;
+import controller.PerusahaanController;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import view.table.pelamaar;
 
 /**
  *
@@ -18,6 +24,7 @@ public class list_lamaran extends javax.swing.JFrame {
      */
     public list_lamaran() {
         initComponents();
+        this.getData();
     }
 
     /**
@@ -111,10 +118,33 @@ public class list_lamaran extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void getData() {
+        DefaultTableModel model = (DefaultTableModel) table_lamaran.getModel();
+        model.setRowCount(0);
+        
+         
+        try{
+            ResultSet rs = PerusahaanController.index();
+            
+            while(rs.next()){
+                int id = rs.getInt("id");
+                String nama = rs.getString("nama");
+                String deskripsi = rs.getString("deskripsi");
+                String alamat = rs.getString("alamat");
+                String email = rs.getString("email");
+                String website = rs.getString("website");
+                Object[] rowData = {id,nama,deskripsi, alamat};
+                model.addRow(rowData); // buat menambah row data di tabe
+            }
+            rs.close(); // statement close
+        }catch(Exception e){
+             Logger.getLogger(pelamaar.class.getName()).log(Level.SEVERE,null,e);
+        }
+    }
+    
     private void table_lamaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_lamaranMouseClicked
           this.setVisible(false);
-         form_lamaran p = new form_lamaran();
+         form_lamaran p = new form_lamaran(1,2);
          p.setVisible(true);
     }//GEN-LAST:event_table_lamaranMouseClicked
 

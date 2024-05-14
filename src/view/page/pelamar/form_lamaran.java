@@ -24,9 +24,9 @@ public class form_lamaran extends javax.swing.JFrame {
     String destinationDir;
     File destinationFile;
     /**
-     * Creates new form form_lamaran
+     * Creates new form 
      */
-    public form_lamaran() {
+    public form_lamaran(int pelamar_id, int lowongan_id) {
         initComponents();
     }
 

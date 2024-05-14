@@ -245,6 +245,7 @@ public class Perusahaan extends javax.swing.JFrame {
     }
     private void table_PerusahaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_PerusahaanMouseClicked
         // TODO add your handling code here:
+        this.status("disabled");
         int selectedRow = table_Perusahaan.getSelectedRow();
         String nik = table_Perusahaan.getValueAt(selectedRow, 1).toString();
         String nama = table_Perusahaan.getValueAt(selectedRow, 2).toString();
@@ -274,13 +275,13 @@ public class Perusahaan extends javax.swing.JFrame {
 
         try{
             ArrayList<String> arr =  new  ArrayList<String>();
+            arr.add(null); // id
             arr.add(nama);
-            arr.add(deskripsi);
             arr.add(deskripsi);
             arr.add(alamat);
             arr.add(telepon);
             arr.add(website);
-            String[] row = {nama,deskripsi,alamat,telepon,website}; // call controller
+            arr.add(null); // user_id
             int result = PerusahaanController.insert(arr);
             if(result > 0 ){
                 JOptionPane.showMessageDialog(this, "data berhasil di tambah");
@@ -313,8 +314,14 @@ public class Perusahaan extends javax.swing.JFrame {
             return;
         }
         try{
-            String[] row = {nama,deskripsi,alamat,telepon,website}; // call controller
-            int result = PerusahaanController.update(row, id);
+            ArrayList<String> arr =  new  ArrayList<String>();
+            arr.add(nama);
+            arr.add(deskripsi);
+            arr.add(alamat);
+            arr.add(telepon);
+            arr.add(website);
+            arr.add(null);
+            int result = PerusahaanController.update(arr, Integer.parseInt(id));
             if(result > 0 ){
                 JOptionPane.showMessageDialog(this, "data berhasil di update");
                 this.getData();

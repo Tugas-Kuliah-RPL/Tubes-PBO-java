@@ -211,14 +211,16 @@ public class Register_pelamar extends javax.swing.JFrame {
         
         try{
             ArrayList<String> arrUser = new  ArrayList<String>();
+            arrUser.add(null);
             arrUser.add(username);
             arrUser.add(password);
             ArrayList<String> arr =  new  ArrayList<String>();
+            arr.add(null);
             arr.add(nik);
             arr.add(nama);
-            arr.add(telepon);
             arr.add(email);
             arr.add(status);
+            arr.add(telepon);
 
             int result = authController.register(arrUser,arr);
             if(result > 0 ){

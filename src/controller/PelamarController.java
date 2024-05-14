@@ -20,17 +20,15 @@ public class PelamarController extends Controller {
        return rs;
     }
     public static int insert(ArrayList<String> values)  {
-        String[] columns = {"nik","nama_pelamar","nomer_telepon","email","status"};
-        return new Pelamaar().insert("tbl_pelamar", columns, values);
+        return new Pelamaar().insert( values,Pelamaar.class);
     }
     
-    public static int update(String[] values, String id){
+    public static int update(ArrayList<String> values, int id){
           String[] columns = {"nik","nama_pelamar","nomer_telepon","email","status"};
-        return new Pelamaar().edit("tbl_pelamar", columns, values, id);
+        return new Pelamaar().edit(columns, values,Pelamaar.class, id);
     }
     
      public static int delete(String id){
-          String[] columns = {"nik","nama_pelamar","nomer_telepon","email","status"};
-        return new Pelamaar().delete("tbl_pelamar", "id="+id);
+        return new Pelamaar().delete(Pelamaar.class, "id="+id);
     }
 }

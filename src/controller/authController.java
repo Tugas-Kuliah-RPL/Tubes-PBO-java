@@ -20,6 +20,6 @@ public class authController extends Controller {
       
     public static int register( ArrayList<String> Loginvalues, ArrayList<String> columnValues){
          String[] columns = {"nik","nama_pelamar","nomer_telepon","email","status"};
-         return new Pelamaar().register("tbl_pelamar", columns, Loginvalues, columnValues);
+         return new Pelamaar().register(Pelamaar.class, columns, Loginvalues, columnValues);
     };
 }
