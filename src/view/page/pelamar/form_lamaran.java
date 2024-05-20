@@ -5,6 +5,7 @@
  */
 package view.page.pelamar;
 
+import Session.AuthSession;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -20,14 +21,17 @@ import javax.swing.JOptionPane;
  * @author LOQ
  */
 public class form_lamaran extends javax.swing.JFrame {
+    private AuthSession session;
     File sourceFile;
     String destinationDir;
     File destinationFile;
     /**
      * Creates new form 
      */
-    public form_lamaran(int pelamar_id, int lowongan_id) {
+    public form_lamaran(AuthSession session) {
         initComponents();
+        this.session = session;
+        //System.out.println(this.session.User().getUsername());
     }
 
     /**
@@ -265,7 +269,7 @@ public class form_lamaran extends javax.swing.JFrame {
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-         list_lamaran p = new list_lamaran();
+         list_lamaran p = new list_lamaran(session);
          p.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
     private void copyFile(File source, File destination) throws IOException {
@@ -307,7 +311,7 @@ public class form_lamaran extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new form_lamaran().setVisible(true);
+               
             }
         });
     }

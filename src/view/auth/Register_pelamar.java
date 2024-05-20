@@ -20,7 +20,7 @@ import view.page.pelamar.home;
 public class Register_pelamar extends javax.swing.JFrame {
 
     /**
-     * Creates new form Register_pelamar
+     * Creates new form 
      */
     public Register_pelamar() {
         initComponents();

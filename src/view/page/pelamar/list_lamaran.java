@@ -6,8 +6,10 @@
 package view.page.pelamar;
 
 import Session.AuthSession;
+import controller.LowonganController;
 import controller.PerusahaanController;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -18,13 +20,14 @@ import view.table.pelamaar;
  * @author LOQ
  */
 public class list_lamaran extends javax.swing.JFrame {
-
+    private AuthSession session;
     /**
      * Creates new form 
      */
-    public list_lamaran() {
+    public list_lamaran(AuthSession session) {
         initComponents();
         this.getData();
+        this.session = session;
     }
 
     /**
@@ -124,16 +127,14 @@ public class list_lamaran extends javax.swing.JFrame {
         
          
         try{
-            ResultSet rs = PerusahaanController.index();
+            ResultSet rs = LowonganController.index();
             
             while(rs.next()){
                 int id = rs.getInt("id");
                 String nama = rs.getString("nama");
-                String deskripsi = rs.getString("deskripsi");
-                String alamat = rs.getString("alamat");
-                String email = rs.getString("email");
-                String website = rs.getString("website");
-                Object[] rowData = {id,nama,deskripsi, alamat};
+                String nama_lowongan = rs.getString("nama_lowongan");
+                String deskripsi_lowongan = rs.getString("deskripsi_lowongan");
+                Object[] rowData = {id,nama,nama_lowongan, deskripsi_lowongan};
                 model.addRow(rowData); // buat menambah row data di tabe
             }
             rs.close(); // statement close
@@ -144,15 +145,21 @@ public class list_lamaran extends javax.swing.JFrame {
     
     private void table_lamaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_lamaranMouseClicked
           this.setVisible(false);
-         form_lamaran p = new form_lamaran(1,2);
+         form_lamaran p = new form_lamaran(session);
          p.setVisible(true);
     }//GEN-LAST:event_table_lamaranMouseClicked
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
          this.setVisible(false);
-         home p = new home(new AuthSession("",-1));
-         p.setVisible(true);
+         home p;
+        try {
+            p = new home(new AuthSession("",-1));
+                 p.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(list_lamaran.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
     }//GEN-LAST:event_backActionPerformed
 
     /**

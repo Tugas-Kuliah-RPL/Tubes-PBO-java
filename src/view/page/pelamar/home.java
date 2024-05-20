@@ -6,18 +6,20 @@
 package view.page.pelamar;
 
 import Session.AuthSession;
+import java.sql.SQLException;
 
 /**
  *
  * @author LOQ
  */
 public class home extends javax.swing.JFrame {
-
+    private AuthSession session;
     /**
      * Creates new form home
      */
-    public home(AuthSession session) {
+    public home(AuthSession session) throws SQLException {
         initComponents();
+        this.session = session;
     }
 
     /**
@@ -95,7 +97,7 @@ public class home extends javax.swing.JFrame {
     private void option_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option_1ActionPerformed
         // TODO add your handling code here:
           this.setVisible(false);
-         list_lamaran p = new list_lamaran();
+         list_lamaran p = new list_lamaran(session);
          p.setVisible(true);
     }//GEN-LAST:event_option_1ActionPerformed
 
@@ -129,7 +131,7 @@ public class home extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new home(new AuthSession("",-1)).setVisible(true);
+              
             }
         });
     }

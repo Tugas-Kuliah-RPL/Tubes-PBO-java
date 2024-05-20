@@ -144,8 +144,15 @@ public class Login extends javax.swing.JFrame {
          int result = authController.login(arrUser);
          if(result > 0){
             this.setVisible(false);
-            home p = new home(new AuthSession("",0));
-            p.setVisible(true);
+           
+            try {
+                home p;
+                p = new home(new AuthSession("",result));
+                 p.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
          }else{
             JOptionPane.showMessageDialog(this, "Login erorr", "validasi",JOptionPane.ERROR_MESSAGE); // buat erorr message
             return;
