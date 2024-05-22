@@ -20,6 +20,7 @@ public class home extends javax.swing.JFrame {
     public home(AuthSession session) throws SQLException {
         initComponents();
         this.session = session;
+        label_ob.setText("Selamat datang "+ session.Pelamars().getNama_pelamar());
     }
 
     /**
@@ -31,14 +32,14 @@ public class home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        label_ob = new javax.swing.JLabel();
         option_2 = new javax.swing.JButton();
         option_1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Selamat datang {NAME}");
+        label_ob.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        label_ob.setText("Selamat datang {NAME}");
 
         option_2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         option_2.setText("Status Penerimaan");
@@ -64,7 +65,7 @@ public class home extends javax.swing.JFrame {
                 .addContainerGap(122, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(label_ob)
                         .addGap(209, 209, 209))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(option_1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -76,7 +77,7 @@ public class home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addComponent(jLabel1)
+                .addComponent(label_ob)
                 .addGap(81, 81, 81)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(option_2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -90,7 +91,7 @@ public class home extends javax.swing.JFrame {
     private void option_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option_2ActionPerformed
         // TODO add your handling code here:
           this.setVisible(false);
-         list_status p = new list_status();
+         list_status p = new list_status(session);
          p.setVisible(true);
     }//GEN-LAST:event_option_2ActionPerformed
 
@@ -137,7 +138,7 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel label_ob;
     private javax.swing.JButton option_1;
     private javax.swing.JButton option_2;
     // End of variables declaration//GEN-END:variables

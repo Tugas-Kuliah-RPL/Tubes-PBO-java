@@ -11,11 +11,30 @@ import model.connection;
  */
 public class Pelamaar extends user {
     public static String table = "tbl_pelamar";
+    private int id;
     private String nik;
     private String nama_pelamar;
-    private String nomer_telepon;
+    private int nomer_telepon;
     private String email;
     private String status;
+    
+    public void setPelamar(int id ,String nik, String namaPelamar, String email, String status, int nomorTelepon) {
+        this.id = id;
+        this.nik = nik;
+        this.nama_pelamar = namaPelamar;
+        this.nomer_telepon = nomorTelepon;
+        this.email = email;
+        this.status = status;
+    }
+
+    public int getId() {
+        return id;
+    }
+    
+
+    public int getNomer_telepon() {
+        return nomer_telepon;
+    }
 
     public void setNik(String nik) {
         this.nik = nik;
@@ -23,10 +42,6 @@ public class Pelamaar extends user {
 
     public void setNama_pelamar(String nama_pelamar) {
         this.nama_pelamar = nama_pelamar;
-    }
-
-    public void setNomer_telepon(String nomer_telepon) {
-        this.nomer_telepon = nomer_telepon;
     }
 
     public void setEmail(String email) {
@@ -45,9 +60,6 @@ public class Pelamaar extends user {
         return nama_pelamar;
     }
 
-    public String getNomer_telepon() {
-        return nomer_telepon;
-    }
 
     public String getEmail() {
         return email;

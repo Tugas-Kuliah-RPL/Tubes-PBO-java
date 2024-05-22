@@ -21,6 +21,7 @@ import view.table.pelamaar;
  */
 public class list_lamaran extends javax.swing.JFrame {
     private AuthSession session;
+    private int id_lowongan;
     /**
      * Creates new form 
      */
@@ -28,6 +29,7 @@ public class list_lamaran extends javax.swing.JFrame {
         initComponents();
         this.getData();
         this.session = session;
+        
     }
 
     /**
@@ -145,7 +147,10 @@ public class list_lamaran extends javax.swing.JFrame {
     
     private void table_lamaranMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_lamaranMouseClicked
           this.setVisible(false);
-         form_lamaran p = new form_lamaran(session);
+         int selectedRow = table_lamaran.getSelectedRow();
+         String id = table_lamaran.getValueAt(selectedRow, 0).toString();
+         System.out.println(id);
+         form_lamaran p = new form_lamaran(session, Integer.parseInt(id));
          p.setVisible(true);
     }//GEN-LAST:event_table_lamaranMouseClicked
 
@@ -154,7 +159,7 @@ public class list_lamaran extends javax.swing.JFrame {
          this.setVisible(false);
          home p;
         try {
-            p = new home(new AuthSession("",-1));
+            p = new home(new AuthSession(session.getRole(),session.User().getId()));
                  p.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(list_lamaran.class.getName()).log(Level.SEVERE, null, ex);
@@ -192,7 +197,7 @@ public class list_lamaran extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new list_lamaran().setVisible(true);
+             
             }
         });
     }

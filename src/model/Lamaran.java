@@ -10,5 +10,5 @@ package model;
  * @author LOQ
  */
 public class Lamaran extends connection {
-    
+     public static String table = "tbl_lamaran";
 }

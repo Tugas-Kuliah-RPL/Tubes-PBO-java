@@ -147,7 +147,7 @@ public class Login extends javax.swing.JFrame {
            
             try {
                 home p;
-                p = new home(new AuthSession("",result));
+                p = new home(new AuthSession("pelamar",result));
                  p.setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

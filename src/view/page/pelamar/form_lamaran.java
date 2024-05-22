@@ -6,6 +6,9 @@
 package view.page.pelamar;
 
 import Session.AuthSession;
+import controller.LamaranController;
+import controller.LowonganController;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -14,6 +17,16 @@ import javax.swing.JFileChooser;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,16 +35,36 @@ import javax.swing.JOptionPane;
  */
 public class form_lamaran extends javax.swing.JFrame {
     private AuthSession session;
+    private int id;
     File sourceFile;
     String destinationDir;
     File destinationFile;
     /**
      * Creates new form 
      */
-    public form_lamaran(AuthSession session) {
+    public form_lamaran(AuthSession session, int id) {
         initComponents();
         this.session = session;
-        //System.out.println(this.session.User().getUsername());
+        this.id = id;
+        this.setValue();
+        System.out.println();
+        System.out.println(this.session.Pelamars().getId());
+    }
+    
+    public void setValue(){
+        ResultSet rs = LowonganController.findID(id);
+        try {
+            while(rs.next()){
+                label_nama.setText(rs.getString("nama"));
+                label_np.setText(rs.getString("nama_lowongan"));
+                label_jenis.setText(rs.getString("jenis_lowongan"));
+                input_nama.setText(session.Pelamars().getNama_pelamar());
+                input_email.setText(session.Pelamars().getEmail());
+                input_notelp.setText(Integer.toString(session.Pelamars().getNomer_telepon()));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(form_lamaran.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -55,13 +88,17 @@ public class form_lamaran extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        input_notelp = new javax.swing.JTextField();
+        input_nama = new javax.swing.JTextField();
+        input_email = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
         btn_upload = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         back = new javax.swing.JButton();
+        label_nama = new javax.swing.JLabel();
+        label_jenis = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        label_np = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
@@ -80,7 +117,7 @@ public class form_lamaran extends javax.swing.JFrame {
 
         jLabel4.setText("Nama pelamar : ");
 
-        jLabel5.setText("alamat pelamar :");
+        jLabel5.setText("email pelamar :");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel6.setText("Data Perusahaan");
@@ -92,11 +129,14 @@ public class form_lamaran extends javax.swing.JFrame {
 
         jLabel9.setText("curiculum vitae :");
 
-        jTextField1.setText("jTextField1");
+        input_notelp.setEditable(false);
+        input_notelp.setText("jTextField1");
 
-        jTextField2.setText("jTextField1");
+        input_nama.setEditable(false);
+        input_nama.setText("jTextField1");
 
-        jTextField3.setText("jTextField1");
+        input_email.setEditable(false);
+        input_email.setText("jTextField1");
 
         submit.setText("submit");
         submit.addActionListener(new java.awt.event.ActionListener() {
@@ -121,44 +161,64 @@ public class form_lamaran extends javax.swing.JFrame {
             }
         });
 
+        label_nama.setText("blank");
+
+        label_jenis.setText("label_jenis");
+
+        jLabel11.setText("nama pekerjaan");
+
+        label_np.setText("blank");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(203, 203, 203))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(submit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel5)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(back)
-                                            .addComponent(jLabel9)))
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel4)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel5)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(back)
+                                                .addComponent(jLabel9)))
+                                        .addComponent(jLabel3))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(input_email, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(input_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(input_notelp, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(btn_upload, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jLabel10))))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(30, 30, 30)
+                                            .addComponent(label_jenis))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btn_upload, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10))))))
+                                        .addComponent(jLabel11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(label_np))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(label_nama)))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(359, 359, 359)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabel1)
+                        .addGap(69, 69, 69))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(59, 59, 59)
@@ -168,25 +228,33 @@ public class form_lamaran extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_nama))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_np))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(label_jenis))
+                .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(input_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_email, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(input_notelp, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,6 +296,11 @@ public class form_lamaran extends javax.swing.JFrame {
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
         // TODO add your handling code here:
         // submit button
+       if (sourceFile == null) {
+          JOptionPane.showMessageDialog(this, "Please select a file to upload.");
+          return;  
+        }
+       
         try (FileInputStream inputStream = new FileInputStream(sourceFile);
               FileOutputStream outputStream = new FileOutputStream(destinationFile)) {
               byte[] buffer = new byte[1024];
@@ -236,9 +309,24 @@ public class form_lamaran extends javax.swing.JFrame {
               while ((bytesRead = inputStream.read(buffer)) > 0) {
                   outputStream.write(buffer, 0, bytesRead);
               }
-
-                System.out.println("File copied successfully: " + destinationFile.getAbsolutePath());
-                System.out.println(destinationFile.getName());
+              DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // date time fortmat
+              Date today = Calendar.getInstance().getTime(); // day time 
+              ArrayList<String> arr =  new  ArrayList<String>();
+              arr.add(null);
+              arr.add(Integer.toString(this.id));
+              arr.add(Integer.toString(this.session.Pelamars().getId()));
+              arr.add(destinationFile.getAbsolutePath());
+              arr.add("Pending");
+              arr.add(df.format(today)); // convert date to string
+              int result =LamaranController.insert(arr);
+             System.out.println("File copied successfully: " + destinationFile.getAbsolutePath());
+                //System.out.println(destinationFile.getName());
+             if(result > 0 ){
+                JOptionPane.showMessageDialog(this, "data berhasil di tambah");
+                list_status viewStatus = new list_status(session);
+                this.setVisible(false);
+                viewStatus.setVisible(true);
+             }
             } catch (IOException e) {
                 System.err.println("Error copying file: " + e.getMessage());
             }  
@@ -253,7 +341,7 @@ public class form_lamaran extends javax.swing.JFrame {
 
         if (result == JFileChooser.APPROVE_OPTION) {
             sourceFile = fileChooser.getSelectedFile();
-            destinationDir = System.getProperty("user.dir") + "/src/files/";
+            destinationDir = System.getProperty("user.dir") + "/src/files/"; // directory file
 
             // Handle potential issues:
             if (sourceFile.equals(new File(destinationDir))) {
@@ -319,9 +407,13 @@ public class form_lamaran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton btn_upload;
+    private javax.swing.JTextField input_email;
+    private javax.swing.JTextField input_nama;
+    private javax.swing.JTextField input_notelp;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -332,9 +424,9 @@ public class form_lamaran extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel label_jenis;
+    private javax.swing.JLabel label_nama;
+    private javax.swing.JLabel label_np;
     private javax.swing.JButton submit;
     // End of variables declaration//GEN-END:variables
 }

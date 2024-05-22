@@ -6,18 +6,29 @@
 package view.page.pelamar;
 
 import Session.AuthSession;
+import controller.LowonganController;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import view.table.pelamaar;
 
 /**
  *
  * @author LOQ
  */
 public class list_status extends javax.swing.JFrame {
-
+   private AuthSession session;
+   private int pelamar_id ;
     /**
      * Creates new form list_status
      */
-    public list_status() {
+    public list_status(AuthSession session) {
         initComponents();
+ 
+        this.session = session;
+        this.pelamar_id = session.Pelamars().getId();
+               this.getData();
     }
 
     /**
@@ -37,7 +48,7 @@ public class list_status extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("List lamaran kerja 2024");
+        jLabel1.setText("Status Penerimaan kerja");
 
         back.setText("kembali");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -112,15 +123,33 @@ public class list_status extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-  this.setVisible(false);
-         home p = new home(new AuthSession("",-1));
-         p.setVisible(true);        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_backActionPerformed
 
     private void table_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_statusMouseClicked
 
     }//GEN-LAST:event_table_statusMouseClicked
 
+     private void getData() {
+        DefaultTableModel model = (DefaultTableModel) table_status.getModel();
+        model.setRowCount(0);
+        
+        try{
+            ResultSet rs = LowonganController.status(pelamar_id);
+            
+            while(rs.next()){
+                int id = rs.getInt("lamaran_id");
+                String nama = rs.getString("nama");
+                String nama_lowongan = rs.getString("nama_lowongan");
+                String status = rs.getString("status");
+                Object[] rowData = {id,nama,nama_lowongan, status};
+                model.addRow(rowData); // buat menambah row data di tabe
+            }
+            rs.close(); // statement close
+        }catch(Exception e){
+             Logger.getLogger(pelamaar.class.getName()).log(Level.SEVERE,null,e);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -149,11 +178,7 @@ public class list_status extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new list_status().setVisible(true);
-            }
-        });
+   
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
