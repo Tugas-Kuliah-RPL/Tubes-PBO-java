@@ -12,6 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import view.table.pelamaar;
+import helper.ButtonFileReader;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,27 +63,27 @@ public class list_status extends javax.swing.JFrame {
 
         table_status.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "id", "nama_perusahaan", "nama_pekerjaan", "status"
+                "id", "nama_perusahaan", "nama_pekerjaan", "status", "cv"
             }
         ));
         table_status.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -142,8 +146,10 @@ public class list_status extends javax.swing.JFrame {
                 String nama = rs.getString("nama");
                 String nama_lowongan = rs.getString("nama_lowongan");
                 String status = rs.getString("status");
-                Object[] rowData = {id,nama,nama_lowongan, status};
+                Object[] rowData = {id,nama,nama_lowongan, status, "Lihat File"};
                 model.addRow(rowData); // buat menambah row data di tabe
+                table_status.getColumnModel().getColumn(4).setCellRenderer(new ButtonFileReader()); // render cell file
+                table_status.getColumnModel().getColumn(4).setCellEditor(new ButtonFileReader()); // set cell editor
             }
             rs.close(); // statement close
         }catch(Exception e){
