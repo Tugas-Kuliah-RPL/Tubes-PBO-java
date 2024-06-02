@@ -25,6 +25,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -36,6 +37,7 @@ import javax.swing.JOptionPane;
 public class form_lamaran extends javax.swing.JFrame {
     private AuthSession session;
     private int id;
+    private String sourceName;
     File sourceFile;
     String destinationDir;
     File destinationFile;
@@ -302,20 +304,21 @@ public class form_lamaran extends javax.swing.JFrame {
         }
        
         try (FileInputStream inputStream = new FileInputStream(sourceFile);
-              FileOutputStream outputStream = new FileOutputStream(destinationFile)) {
-              byte[] buffer = new byte[1024];
-              int bytesRead;
-
-              while ((bytesRead = inputStream.read(buffer)) > 0) {
-                  outputStream.write(buffer, 0, bytesRead);
-              }
+            FileOutputStream outputStream = new FileOutputStream(destinationFile)) {
+            
+             byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+            
               DateFormat df = new SimpleDateFormat("yyyy-MM-dd"); // date time fortmat
               Date today = Calendar.getInstance().getTime(); // day time 
               ArrayList<String> arr =  new  ArrayList<String>();
               arr.add(null);
               arr.add(Integer.toString(this.id));
               arr.add(Integer.toString(this.session.Pelamars().getId()));
-              arr.add(destinationFile.getAbsolutePath());
+              arr.add(sourceName);
               arr.add("Pending");
               arr.add(df.format(today)); // convert date to string
               int result =LamaranController.insert(arr);
@@ -348,8 +351,11 @@ public class form_lamaran extends javax.swing.JFrame {
                 System.out.println("Error: Source and destination are the same directory.");
                 return; // Exit if copying within the same directory
             }
+            Random rand = new Random();
+            sourceName = rand.nextInt(1000) + sourceFile.getName();
+    
 
-            destinationFile = new File(destinationDir, sourceFile.getName());
+            destinationFile = new File(destinationDir, sourceName);
         }
          
     }//GEN-LAST:event_btn_uploadActionPerformed

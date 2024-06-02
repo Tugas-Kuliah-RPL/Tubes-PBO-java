@@ -84,11 +84,12 @@
         <Component class="javax.swing.JTable" name="table_status">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="5" rowCount="18">
+              <Table columnCount="6" rowCount="18">
                 <Column editable="true" title="id" type="java.lang.Object"/>
                 <Column editable="true" title="nama_perusahaan" type="java.lang.Object"/>
                 <Column editable="true" title="nama_pekerjaan" type="java.lang.Object"/>
                 <Column editable="true" title="status" type="java.lang.Object"/>
+                <Column editable="true" title="name cv" type="java.lang.Object"/>
                 <Column editable="true" title="cv" type="java.lang.Object"/>
               </Table>
             </Property>

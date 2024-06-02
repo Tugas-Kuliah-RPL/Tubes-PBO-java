@@ -14,7 +14,13 @@ import model.Pelamaar;
  * @author LOQ
  */
 public class LamaranController extends Controller {
-      public static int insert(ArrayList<String> values)  {
+
+    /**
+     *
+     * @param values
+     * @return
+     */
+    public static int insert(ArrayList<String> values)  {
         return new Lamaran().insert( values,Lamaran.class);
     }
 }

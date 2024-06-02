@@ -13,5 +13,5 @@ import model.Pelamaar;
  * @author LOQ
  */
 abstract class Controller {
-
+    private String name = "Controller";
 }
