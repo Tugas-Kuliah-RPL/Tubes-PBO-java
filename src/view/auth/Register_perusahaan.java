@@ -46,7 +46,7 @@ public class Register_perusahaan extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        container_login.setBackground(new java.awt.Color(153, 153, 153));
+        container_login.setBackground(new java.awt.Color(204, 255, 255));
         container_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         container_login.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
@@ -81,7 +81,7 @@ public class Register_perusahaan extends javax.swing.JFrame {
         container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 110, -1));
 
         btn_login.setText("back to login");
-        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 150, 30));
+        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 140, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("password");
