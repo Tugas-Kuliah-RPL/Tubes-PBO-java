@@ -46,7 +46,6 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         input_password = new javax.swing.JTextField();
         btn_register = new javax.swing.JButton();
-        btn_register = new javax.swing.JButton();
         btn_login = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,15 +71,15 @@ public class Login extends javax.swing.JFrame {
         container_login.add(input_username, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 95, 292, 34));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("username");
+        jLabel2.setText("Username");
         container_login.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, 26));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("password");
+        jLabel3.setText("Password");
         container_login.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, 26));
         container_login.add(input_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 292, 34));
 
-        btn_register.setText("register");
+        btn_register.setText("Register");
         btn_register.setBorder(null);
         btn_register.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_register.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +87,7 @@ public class Login extends javax.swing.JFrame {
                 btn_registerActionPerformed(evt);
             }
         });
-        container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 130, 50));
+        container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 100, 30));
 
         btn_login.setText("Login");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +95,7 @@ public class Login extends javax.swing.JFrame {
                 btn_loginActionPerformed(evt);
             }
         });
-        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 130, 50));
+        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

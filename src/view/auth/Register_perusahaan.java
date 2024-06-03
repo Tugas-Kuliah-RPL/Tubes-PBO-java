@@ -56,10 +56,9 @@ public class Register_perusahaan extends javax.swing.JFrame {
         container_login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Register Perusahaan form");
-        container_login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, 26));
+        jLabel1.setText("REGISTER PERUSAHAAN");
+        container_login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, 26));
 
-        jTextField1.setText("username");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -75,20 +74,20 @@ public class Register_perusahaan extends javax.swing.JFrame {
         jLabel3.setText("nama_perusaahaan");
         container_login.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, 26));
 
-        jTextField2.setText("nama_perusahaan");
+        jTextField2.setToolTipText("");
         container_login.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 260, 34));
 
         btn_register.setText("register");
-        container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 130, 50));
+        container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 110, -1));
 
         btn_login.setText("back to login");
-        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 130, 50));
+        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 150, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("password");
         container_login.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 26));
 
-        jTextField3.setText("password");
+        jTextField3.setToolTipText("");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -100,7 +99,6 @@ public class Register_perusahaan extends javax.swing.JFrame {
         jLabel5.setText("deskripsi");
         container_login.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, 26));
 
-        jTextField4.setText("nama");
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -108,7 +106,6 @@ public class Register_perusahaan extends javax.swing.JFrame {
         });
         container_login.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 260, 34));
 
-        jTextField5.setText("email");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -120,7 +117,6 @@ public class Register_perusahaan extends javax.swing.JFrame {
         jLabel6.setText("email");
         container_login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, 26));
 
-        jTextField6.setText("website");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);

@@ -64,10 +64,9 @@ public class Register_pelamar extends javax.swing.JFrame {
         container_login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Register Pelamar form");
-        container_login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, 26));
+        jLabel1.setText("REGISTER PELAMAR");
+        container_login.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, 26));
 
-        input_username.setText("username");
         input_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_usernameActionPerformed(evt);
@@ -82,8 +81,6 @@ public class Register_pelamar extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("nik");
         container_login.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, 26));
-
-        input_nik.setText("nik");
         container_login.add(input_nik, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 260, 34));
 
         btn_register.setText("register");
@@ -92,7 +89,7 @@ public class Register_pelamar extends javax.swing.JFrame {
                 btn_registerActionPerformed(evt);
             }
         });
-        container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 300, 130, 50));
+        container_login.add(btn_register, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 100, 30));
 
         btn_login.setText("back to login");
         btn_login.addActionListener(new java.awt.event.ActionListener() {
@@ -100,13 +97,12 @@ public class Register_pelamar extends javax.swing.JFrame {
                 btn_loginActionPerformed(evt);
             }
         });
-        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 130, 50));
+        container_login.add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 130, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("password");
         container_login.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 26));
 
-        input_password.setText("password");
         input_password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_passwordActionPerformed(evt);
@@ -118,7 +114,6 @@ public class Register_pelamar extends javax.swing.JFrame {
         jLabel5.setText("nama");
         container_login.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, 26));
 
-        input_nama.setText("nama");
         input_nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_namaActionPerformed(evt);
@@ -126,7 +121,6 @@ public class Register_pelamar extends javax.swing.JFrame {
         });
         container_login.add(input_nama, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 260, 34));
 
-        input_email.setText("email");
         input_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_emailActionPerformed(evt);
@@ -138,7 +132,6 @@ public class Register_pelamar extends javax.swing.JFrame {
         jLabel6.setText("email");
         container_login.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, 26));
 
-        input_telepon.setText("no_telepon");
         input_telepon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 input_teleponActionPerformed(evt);
