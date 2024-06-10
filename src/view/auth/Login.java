@@ -17,6 +17,7 @@ import view.table.pelamaar;
 import view.table.Perusahaan;
 import view.*;
 import view.page.pelamar.*;
+import view.table.index_page;
 /**
  *
  * @author USER
@@ -143,11 +144,17 @@ public class Login extends javax.swing.JFrame {
          int result = authController.login(arrUser);
          if(result > 0){
             this.setVisible(false);
-           
+             System.out.println(username);
             try {
-                home p;
-                p = new home(new AuthSession("pelamar",result));
-                 p.setVisible(true);
+                if(username.equals("admin")){
+                  index_page i = new index_page();
+                  i.setVisible(true);
+                }else{
+                   home p;
+                   p = new home(new AuthSession("pelamar",result));
+                   p.setVisible(true);
+                }
+              
             } catch (SQLException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }

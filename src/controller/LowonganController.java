@@ -25,7 +25,7 @@ public class LowonganController extends Controller {
                + "tbl_pelamar.nama_pelamar,tbl_lamaran.cv, tbl_perusahaan.nama, tbl_lowongan.nama_lowongan, tbl_lowongan.deskripsi_lowongan, "
                + "tbl_lamaran.status FROM tbl_perusahaan INNER JOIN tbl_lowongan INNER JOIN tbl_lamaran INNER JOIN tbl_pelamar "
                + "ON tbl_lowongan.perusahaan_id = tbl_perusahaan.id AND tbl_lowongan.id = tbl_lamaran.lowongan_id AND "
-               + "tbl_lamaran.pelamar_id = tbl_pelamar.id where tbl_lamaran.pelamar_id = "+id+";");
+               + "tbl_lamaran.pelamar_id = tbl_pelamar.id where tbl_lamaran.pelamar_id = "+id+" ORDER BY lamaran_id ASC;");
          System.out.println(rs);
        return rs;
     }

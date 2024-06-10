@@ -64,6 +64,7 @@ public class AuthSession extends connection {
             if(this.role == "pelamar"){
                 System.out.println(this.userId);
                 ResultSet rs = new user().getData("SELECT * FROM tbl_pelamar WHERE user_id = "+this.userId);
+                System.out.println("fwefwefwefwef");
                 while(rs.next()){
                     this.p.setPelamar(Integer.parseInt(rs.getString("id")),rs.getString("nik"),rs.getString("nama_pelamar"),rs.getString("email"),rs.getString("status"),rs.getInt("nomer_telepon"));
                 }

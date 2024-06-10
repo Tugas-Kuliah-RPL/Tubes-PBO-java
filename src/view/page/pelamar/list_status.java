@@ -15,6 +15,7 @@ import view.table.pelamaar;
 import helper.ButtonFileReader;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -128,6 +129,14 @@ public class list_status extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
        // TODO add your handling code here:
+         this.setVisible(false);
+         home p;
+        try {
+            p = new home(new AuthSession(session.getRole(),session.User().getId()));
+                 p.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(list_lamaran.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_backActionPerformed
 
     private void table_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_statusMouseClicked

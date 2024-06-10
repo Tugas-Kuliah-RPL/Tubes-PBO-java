@@ -95,7 +95,7 @@ public class form_lamaran extends javax.swing.JFrame {
         input_email = new javax.swing.JTextField();
         submit = new javax.swing.JButton();
         btn_upload = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        label_file = new javax.swing.JLabel();
         back = new javax.swing.JButton();
         label_nama = new javax.swing.JLabel();
         label_jenis = new javax.swing.JLabel();
@@ -155,7 +155,7 @@ public class form_lamaran extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("file.pdf");
+        label_file.setText("file.pdf");
 
         back.setText("kembali");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +203,7 @@ public class form_lamaran extends javax.swing.JFrame {
                                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                                     .addComponent(btn_upload, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(jLabel10))))
+                                                    .addComponent(label_file))))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGap(30, 30, 30)
                                             .addComponent(label_jenis))))
@@ -263,7 +263,7 @@ public class form_lamaran extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(btn_upload)
-                    .addComponent(jLabel10))
+                    .addComponent(label_file))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(submit)
@@ -350,13 +350,14 @@ public class form_lamaran extends javax.swing.JFrame {
             // Handle potential issues:
             if (sourceFile.equals(new File(destinationDir))) {
                 System.out.println("Error: Source and destination are the same directory.");
-                return; // Exit if copying within the same directory
+                return; 
             }
             Random rand = new Random();
             sourceName = rand.nextInt(1000) + sourceFile.getName();
     
 
             destinationFile = new File(destinationDir, sourceName);
+            label_file.setText(destinationFile.getName());
         }
          
     }//GEN-LAST:event_btn_uploadActionPerformed
@@ -367,15 +368,7 @@ public class form_lamaran extends javax.swing.JFrame {
          list_lamaran p = new list_lamaran(session);
          p.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
-    private void copyFile(File source, File destination) throws IOException {
-      try (FileInputStream fis = new FileInputStream(source); FileOutputStream fos = new FileOutputStream(destination)) {
-        byte[] buffer = new byte[1024];
-        int bytesRead;
-        while ((bytesRead = fis.read(buffer)) > 0) {
-          fos.write(buffer, 0, bytesRead);
-        }
-      }
-    }
+   
     /**
      * @param args the command line arguments
      */
@@ -419,7 +412,6 @@ public class form_lamaran extends javax.swing.JFrame {
     private javax.swing.JTextField input_notelp;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -431,6 +423,7 @@ public class form_lamaran extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label_file;
     private javax.swing.JLabel label_jenis;
     private javax.swing.JLabel label_nama;
     private javax.swing.JLabel label_np;
