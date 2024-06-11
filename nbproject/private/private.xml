@@ -4,25 +4,30 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/auth/Register_perusahaan.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/tubes/Tubes.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/controller/LowonganController.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/controller/Controller.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/page/pelamar/list_lamaran.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/page/pelamar/list_status.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/auth/Register_pelamar.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/Lamaran.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/page/pelamar/form_lamaran.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/table/Perusahaan.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/auth/Login.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/controller/PelamarController.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/controller/authController.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/page/pelamar/home.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/Perusahaan.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/Session/AuthSession.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/controller/LamaranController.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/model.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/table/index_page.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/connection.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/authentication.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/Lowongan.java</file>
-            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/helper/ButtonFileReader.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/table/pelamaar.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/tubes/Tubes.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/controller/LowonganController.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/auth/Login.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/page/pelamar/home.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/Perusahaan.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/Session/AuthSession.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/view/table/index_page.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/user.java</file>
+            <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/helper/ButtonFileReader.java</file>
             <file>file:/C:/Users/LOQ/Documents/Sekolah/Semester%204/PBO/Praktikum/check/Tubes-PBO-java/src/model/Pelamaar.java</file>
         </group>
     </open-files>

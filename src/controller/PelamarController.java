@@ -16,7 +16,6 @@ import java.util.ArrayList;
 public class PelamarController extends Controller {
     public static ResultSet index(){
        ResultSet rs = new Pelamaar().getData("SELECT * FROM tbl_pelamar");
-        System.out.println("here 2");
        return rs;
     }
     public static int insert(ArrayList<String> values)  {
