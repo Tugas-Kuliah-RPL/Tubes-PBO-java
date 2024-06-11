@@ -194,7 +194,7 @@ public class Register_pelamar extends javax.swing.JFrame {
         String nik = input_nik.getText(); // get input
         String nama = input_nama.getText();
         String telepon = input_telepon.getText();
-        String email = input_telepon.getText();
+        String email = input_email.getText();
         String status = "active";
         
         if (username.isEmpty() || password.isEmpty() || nik.isEmpty() || nama.isEmpty() || telepon.isEmpty() || email.isEmpty() || status.isEmpty()){
@@ -219,7 +219,7 @@ public class Register_pelamar extends javax.swing.JFrame {
             if(result > 0 ){
                 JOptionPane.showMessageDialog(this, "data berhasil di reguster");
                     this.setVisible(false);
-                    home p = new home(new AuthSession("",result)); // set name login
+                    Login p = new Login(); // set name login
                     p.setVisible(true);
             }
         }catch(Exception e){
